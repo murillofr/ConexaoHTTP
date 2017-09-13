@@ -23,7 +23,7 @@ import java.net.URL;
 
 public class MainActivity extends AppCompatActivity {
 
-    String opcaoRadio;
+    String opcaoRadio = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -115,9 +115,13 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void enviar(View v) {
-        Intent i = new Intent(this, SegundaActivity.class);
-        i.putExtra("opcao",opcaoRadio);
-        startActivity(i);
+        if (opcaoRadio != "") {
+            Intent i = new Intent(this, SegundaActivity.class);
+            i.putExtra("opcao",opcaoRadio);
+            startActivity(i);
+        } else {
+            Toast.makeText(this,"Selecione alguma das opções",Toast.LENGTH_SHORT).show();
+        }
     }
 
 }
